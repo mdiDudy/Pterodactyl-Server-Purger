@@ -9,6 +9,7 @@ const headers = {
 
 const fetchAllServers = async () => {
   console.log('Attempting to fetch all servers...');
+  console.log('Made by _mdi')
   let allServers = [];
   let page = 1;
   const perPage = 100;
@@ -68,6 +69,7 @@ const purgeServers = async () => {
 const main = async () => {
   while (true) {
     console.log('Starting purging cycle...');
+    console.log('Made by _mdi')
     try {
       await purgeServers();
       console.log('Purge cycle completed successfully.');
@@ -75,6 +77,7 @@ const main = async () => {
       console.error('Error in purging servers:', error);
     }
     console.log('Waiting for the next cycle...');
+    console.log('Made by _mdi')
     await new Promise(resolve => setTimeout(resolve, 10000)); // 10 seconds delay
   }
 };
