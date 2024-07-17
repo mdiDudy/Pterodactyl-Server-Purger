@@ -1,4 +1,4 @@
-## ⭐ Peterodactyl Server Purger ⭐
+## ⭐ Pterodactyl Server Purger ⭐
 * A Script made in NodeJS that let you easily purge servers, its currently being used in LylaNodes!
 ## How to use it? 
 - Simply, Download the `Source Code`,
