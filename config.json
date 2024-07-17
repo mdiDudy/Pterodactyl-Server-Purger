@@ -1,6 +1,6 @@
 {
   "panelUrl": "YOUR_PANEL_URL",
   "apiKey": "YOUR_API_KEY",
-  "nodeIds": [], // your node ids (sperate with ,) 
-  "excludedNameKeyword": "EXCLUDED_KEYWORD" // put NOEXCLUDEDKEYWORD for a full purge 
+  "nodeIds": [], 
+  "excludedNameKeyword": "EXCLUDED_KEYWORD" 
 }
