@@ -1,6 +1,6 @@
 {
   "panelUrl": "YOUR_PANEL_URL",
   "apiKey": "YOUR_API_KEY",
-  "nodeIds": [], 
+  "nodeIds": [1, 2, 3, 4, 5], 
   "excludedNameKeyword": "EXCLUDED_KEYWORD" 
 }
