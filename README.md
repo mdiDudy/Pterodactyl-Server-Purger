@@ -17,3 +17,8 @@
 © Pterodactyl-Server-Purger
 
 This code is released under the [AGPL License](https://github.com/mdiDudy/Pterodactyl-Server-Purger/blob/main/LICENSE "AGPL License")
+
+## Credits 
+- Please, do not remove the credits on this source code. The LylaNodes Team has worked hard on this!
+
+- Removing, credits can result in a sue or DMCA Takedown.
