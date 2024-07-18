@@ -18,7 +18,7 @@ const headers = {
 
 const fetchAllServers = async () => {
   console.log(chalk.yellow('Attempting to fetch all servers...'));
-  console.log(chalk.cyan('Made by _mdi'));
+  console.log(chalk.cyan('Made by the LylaNodes Team'));
   let allServers = [];
   let page = 1;
   const perPage = 100;
@@ -77,8 +77,8 @@ const purgeServers = async () => {
 
 const main = async () => {
   while (true) {
-    console.log(chalk.blue('Starting purging cycle...'));
-    console.log(chalk.cyan('Made by _mdi'));
+    console.log(chalk.blue('Trying to start the purging cycle...'));
+    console.log(chalk.cyan('Made by the LylaNodes Team'));
     try {
       await purgeServers();
       console.log(chalk.green('Purge cycle completed successfully.'));
@@ -86,7 +86,7 @@ const main = async () => {
       console.error(chalk.red('Error in purging servers:'), error);
     }
     console.log(chalk.blue('Waiting for the next cycle...'));
-    console.log(chalk.cyan('Made by _mdi'));
+    console.log(chalk.cyan('Made by the LylaNodes Team!'));
     await new Promise(resolve => setTimeout(resolve, 10000)); // This, is a 10 second delay.
   }
 };
