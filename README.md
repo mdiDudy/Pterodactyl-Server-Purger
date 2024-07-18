@@ -12,3 +12,8 @@
 - Hasen
 - The Kraters
 - Menudo G.
+
+## License
+© Pterodactyl-Server-Purger
+
+This code is released under the [AGPL License](https://github.com/mdiDudy/Pterodactyl-Server-Purge/blob/main/license "AGPL License")
