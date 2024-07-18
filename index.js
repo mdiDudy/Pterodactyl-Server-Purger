@@ -7,6 +7,7 @@ LICENSE: The license is in the code!
 */
 
 const axios = require('axios');
+const chalk = require('chalk');
 const config = require('./config.json');
 
 const headers = {
@@ -16,8 +17,8 @@ const headers = {
 };
 
 const fetchAllServers = async () => {
-  console.log('Attempting to fetch all servers...');
-  console.log('Made by _mdi')
+  console.log(chalk.yellow('Attempting to fetch all servers...'));
+  console.log(chalk.cyan('Made by _mdi'));
   let allServers = [];
   let page = 1;
   const perPage = 100;
@@ -36,58 +37,59 @@ const fetchAllServers = async () => {
       allServers = allServers.concat(servers);
       page += 1;
     } catch (error) {
-      console.error('Error fetching servers:', error.message);
+      console.error(chalk.red('Error fetching servers:'), error.message);
       break;
     }
   }
 
-  console.log(`Fetched ${allServers.length} servers.`);
+  console.log(chalk.green(`Fetched ${allServers.length} servers.`));
   return allServers;
 };
 
 const deleteServer = async (serverId) => {
-  console.log(`Attempting to delete server ${serverId}...`);
+  console.log(chalk.yellow(`Attempting to delete server ${serverId}...`));
   try {
     await axios.delete(`${config.panelUrl}/api/application/servers/${serverId}`, { headers });
-    console.log(`Deleted server ${serverId}`);
+    console.log(chalk.green(`Deleted server ${serverId}`));
   } catch (error) {
-    console.error(`Error deleting server ${serverId}:`, error.message);
+    console.error(chalk.red(`Error deleting server ${serverId}:`), error.message);
   }
 };
 
 const purgeServers = async () => {
   const servers = await fetchAllServers();
   if (servers.length === 0) {
-    console.log('No servers to process.');
+    console.log(chalk.yellow('No servers to process.'));
     return;
   }
   for (const server of servers) {
     const serverName = server.attributes.name;
     const nodeId = server.attributes.node;
-    console.log(`Processing server: ${serverName} on node ${nodeId}`);
+    console.log(chalk.cyan(`Processing server: ${serverName} on node ${nodeId}`));
     if (config.nodeIds.includes(nodeId) && !serverName.includes(config.excludedNameKeyword)) {
-      console.log(`Server ${serverName} does not contain '${config.excludedNameKeyword}'. It will be deleted.`);
+      console.log(chalk.yellow(`Server ${serverName} does not contain '${config.excludedNameKeyword}'. It will be deleted.`));
       await deleteServer(server.attributes.id);
     } else {
-      console.log(`Server ${serverName} contains '${config.excludedNameKeyword}' or is not on a specified node. It will not be deleted.`);
+      console.log(chalk.yellow(`Server ${serverName} contains '${config.excludedNameKeyword}' or is not on a specified node. It will not be deleted.`));
     }
   }
 };
 
 const main = async () => {
   while (true) {
-    console.log('Starting purging cycle...');
-    console.log('Made by _mdi')
+    console.log(chalk.blue('Starting purging cycle...'));
+    console.log(chalk.cyan('Made by _mdi'));
     try {
       await purgeServers();
-      console.log('Purge cycle completed successfully.');
+      console.log(chalk.green('Purge cycle completed successfully.'));
     } catch (error) {
-      console.error('Error in purging servers:', error);
+      console.error(chalk.red('Error in purging servers:'), error);
     }
-    console.log('Waiting for the next cycle...');
-    console.log('Made by _mdi')
-    await new Promise(resolve => setTimeout(resolve, 10000)); // 10 seconds delay
+    console.log(chalk.blue('Waiting for the next cycle...'));
+    console.log(chalk.cyan('Made by _mdi'));
+    await new Promise(resolve => setTimeout(resolve, 10000)); // This, is a 10 second delay.
   }
 };
 
-main().catch(error => console.error('Unexpected error in main function:', error));
+main().catch(error => console.error(chalk.red('Unexpected error in main function:'), error));
+
