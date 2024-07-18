@@ -1,3 +1,11 @@
+/*
+
+NAME: Pterodactyl-Server-Purger
+AUTHORS: Menudo G., MDI, TheKraters, Hasen
+LICENSE: The license is in the code!
+
+*/
+
 const axios = require('axios');
 const config = require('./config.json');
 
